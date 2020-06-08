@@ -1,0 +1,16 @@
+a {
+    text-decoration: none;
+}
+  
+.home-page-container {
+    padding-left: 12%;
+    padding-right: 12%;
+}
+
+.promo-container {
+    
+}
+
+.promo-slogan {
+    font-size: calc(40px + (80 - 40) * ((100vw - 300px) / (1600 - 300)));
+}

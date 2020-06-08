@@ -1,0 +1,99 @@
+<div class="stands-container"
+    fxLayout="column"    
+>
+    <h1>Stand Repository</h1>
+
+    <mat-tab-group mat-align-tabs="center">
+        <!-- Current stands -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Current
+            </ng-template>
+            <mat-card>
+                <mat-card-title>
+                    Current stands
+                </mat-card-title>
+                <mat-nav-list>
+                    <mat-list-item routerLink="/stands/{{stand.Id}}" *ngFor="let stand of stands">
+                        <img matListAvatar src="{{stand.ImageUrl}}" alt=""/>
+                        <div mat-line> {{stand.Id}}: {{stand.Name}} </div>
+                        <div mat-line> {{ stand.User }}</div>
+                        <button mat-flat-button title="Delete this stand" color="warn"
+                            (click)="delete(stand)">
+                            Delete
+                        </button>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-card>
+        </mat-tab>
+        <!-- Form for creating a new stand -->
+        <mat-tab>
+            <mat-card
+                fxLayout="column"    
+            >
+                <ng-template mat-tab-label>
+                    Create new
+                </ng-template>
+                <mat-card-title>
+                    Create a new stand
+                </mat-card-title>
+                <form class="add-stand-form"
+                    fxFlex.lt-sm="75%"
+                    fxLayoutGap="8px"
+                >
+                    <mat-card>
+                        <img class="stand-image" src="{{standImageUrl.value}}" alt=""/>
+                    </mat-card>
+                    <mat-form-field class="form-field">
+                        <mat-label> Stand image</mat-label> 
+                        <input matInput #standImageUrl placeholder="Link an image of your stand (optional)"/>
+                    </mat-form-field>
+                
+                    <mat-form-field class="form-field">
+                        <mat-label> Name</mat-label> 
+                        <input matInput #standName placeholder="What is the new stand's name?"/>
+                    </mat-form-field>
+                
+                    <br/>
+                
+                    <mat-form-field class="form-field">
+                        <mat-label> User</mat-label> 
+                        <input matInput #standUser placeholder="Who wields this stand?"/>
+                    </mat-form-field>
+                
+                    <br/>
+                
+                    <mat-form-field class="form-field">
+                        <mat-label> Main colour 
+                            <div class="color-box" style="background-color: {{standColour.value}};"></div>    
+                        </mat-label> 
+                        <input matInput #standColour placeholder="Enter this stand's main colour (ex: white/#FFFFFF)"/>
+                    </mat-form-field>
+                
+                    <br/>
+                    
+                    <mat-checkbox #standLongRange labelPosition="before"> 
+                        Is this a long-range stand?
+                    </mat-checkbox>
+                
+                    <br/>
+                    
+                    <button mat-flat-button color="accent" (click)="add(
+                        standImageUrl.value,
+                        standName.value, 
+                        standUser.value, 
+                        standColour.value, 
+                        standLongRange.checked);
+                        standImageUrl.value='';
+                        standName.value='';
+                        standUser.value='';
+                        standColour.value='';
+                        standLongRange.checked=false">
+                        Submit
+                    </button>
+                
+                </form>
+            </mat-card>
+        </mat-tab>
+    </mat-tab-group>
+</div>

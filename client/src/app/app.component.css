@@ -1,0 +1,25 @@
+.toolbar-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 32px;
+}
+
+/* .toolbar-items-left {
+    display: flex;
+}
+
+.toolbar-items-right {
+    display: flex;
+} */
+
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+        Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}

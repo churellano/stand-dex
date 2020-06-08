@@ -1,0 +1,42 @@
+  <!-- Default toolbar -->
+<nav>
+  <mat-toolbar class="toolbar mat-elevation-z12" color="primary" fxFlex fxLayout="row">
+
+    <!-- Hamburger menu icon for side navigation -->
+    <button mat-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
+      <mat-icon>
+        menu
+      </mat-icon>
+    </button>
+
+    <span><a mat-flat-button color="primary" routerLink="/"> {{title}} </a></span>
+    
+    <span fxShow="true" fxHide.lt-md="true">
+      <a mat-flat-button color="primary" routerLink="/dashboard"> Dashboard </a>
+      <a mat-flat-button color="primary" routerLink="/stands"> Stands </a>
+    </span>
+    
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+
+    <!-- Search bar -->
+    <app-stand-search></app-stand-search>
+
+  </mat-toolbar>
+</nav>
+
+<!-- Side navigation for smaller screens -->
+<mat-sidenav-container fxFlexFill class="example-container">
+  <mat-sidenav #sidenav fxLayout="column">
+    <div fxLayout="column">
+      <!-- <a (click)="sidenav.toggle()" mat-button>Close</a> -->
+      <a mat-button routerLink="/dashboard"> Dashboard </a>
+      <a mat-button routerLink="/stands"> Stands </a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content fxFlexFill>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+ <app-messages></app-messages>

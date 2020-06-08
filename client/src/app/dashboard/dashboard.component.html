@@ -1,0 +1,32 @@
+<div class="dashboard-container"
+  fxLayout="column"
+  fxLayoutGap="8px"
+>
+
+  <div>
+    <h1>Featured stands</h1>
+  </div>
+
+  <div class="stand-card-container"
+    fxLayout="row" 
+    fxLayout.lt-sm="column" 
+    fxLayoutGap="32px" 
+  >
+    <mat-card matRipple class="stand-card mat-elevation-z3" *ngFor="let stand of stands" routerLink="/stands/{{stand.Id}}"
+      fxLayout="column"
+      fxLayoutAlign="space-between center"
+      fxFlex="0 1 calc(33.3% - 32px)"
+      fxFlex.lt-md="0 1 calc(50% - 32px)"
+      fxFlex.lt-sm="100%"
+    >
+      <mat-card-header>
+        <mat-card-title class="stand-title">
+          {{stand.Name}}
+        </mat-card-title>
+      </mat-card-header>
+      <img mat-card-image class="stand-image" src={{stand.ImageUrl}}/>
+    </mat-card>
+  </div>
+  
+</div>
+

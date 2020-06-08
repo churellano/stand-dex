@@ -1,0 +1,38 @@
+<div class="stand-search-container"
+  fxLayout="row">
+
+    <!-- Search bar input -->
+    <form >
+      <mat-form-field class="search-bar">
+        <mat-label> </mat-label>
+        <input 
+          matInput 
+          #searchBox
+          (input)="search(searchBox.value)" 
+          [matAutocomplete]="auto"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </form>
+    
+    <!-- Search results -->
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option 
+        *ngFor="let stand of stands$ | async" 
+        [value]="stand.Name"
+        routerLink="/stands/{{stand.Id}}"
+      >
+        {{stand.Name}}
+        <mat-divider></mat-divider>
+      </mat-option>
+    </mat-autocomplete>
+
+    <!-- Button which reveals search bar on smaller screens -->
+    <!-- <button mat-button fxShow="true" fxHide.gt-sm="true" (click)="toggle()"> 
+      <mat-icon>
+        search
+      </mat-icon>
+    </button> -->
+    
+
+  </div>

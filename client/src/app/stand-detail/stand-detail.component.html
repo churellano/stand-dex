@@ -1,0 +1,74 @@
+<div class="stand-detail-container" *ngIf="stand"
+    fxLayout="column"
+    fxFlex
+    fxLayoutGap="32px"
+>
+    <h2> {{ stand.Name | uppercase }} Information </h2>
+
+    <div>
+        <button (click)="goBack()"
+            mat-flat-button
+            color="primary"> 
+            Go back 
+        </button>
+    </div>
+    
+    
+
+    <div class="update-stand-form"
+        fxLayout="column"
+        fxLayoutAlign="flex-center"
+        fxFlex.lt-sm="75%"
+        fxLayoutGap="8px"
+    >
+        <mat-card>
+            <img class="stand-image" src="{{stand.ImageUrl}}" alt=""/>
+        </mat-card>
+
+        <mat-form-field class="form-field">
+            <mat-label> Stand image</mat-label> 
+            <input matInput [(ngModel)]="stand.ImageUrl" placeholder="Image link"/>
+        </mat-form-field>
+        
+        <mat-form-field class="form-field">
+            <mat-label> Name:</mat-label> 
+            <input matInput [(ngModel)]="stand.Name" placeholder="name"/>
+        </mat-form-field>
+        
+        <br/>
+
+        <mat-form-field class="form-field">
+            <mat-label> User: </mat-label> 
+            <input matInput [(ngModel)]="stand.User" placeholder="user"/>
+        </mat-form-field>
+
+        <br/>
+
+        <mat-form-field class="form-field">
+            <mat-label> Main colour: 
+                <div class="color-box" style="background-color: {{stand.MainColour}};"></div>
+            </mat-label>
+            
+            <input matInput [(ngModel)]="stand.MainColour" placeholder="main colour"/>
+        </mat-form-field>
+
+        <br/>
+
+        <mat-checkbox [(ngModel)]="stand.LongRange" labelPosition="before"> Long range: </mat-checkbox>
+
+        <br/>
+
+        <p> First appearance: {{ stand.FirstAppearance | date }} </p>
+
+        <div>
+            <button (click)="save()" 
+                mat-flat-button 
+                color="accent" >
+                Save
+            </button>
+        </div>
+        
+    </div>
+
+
+</div>
